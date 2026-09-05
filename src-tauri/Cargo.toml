@@ -1,0 +1,32 @@
+[package]
+name = "verdant-launcher"
+version = "0.1.0"
+description = "Verdant Launcher â€” MVP"
+authors = ["Verdant Team"]
+edition = "2021"
+
+[lib]
+name = "verdant_launcher_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri          = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-fs = "2"
+serde          = { version = "1", features = ["derive"] }
+base64         = "0.22"
+serde_json     = "1"
+reqwest        = { version = "0.12", features = ["json", "rustls-tls", "multipart"], default-features = false }
+tokio          = { version = "1", features = ["full"] }
+zip            = "0.6"
+futures        = "0.3"
+tauri-plugin-process = "2"
+discord-rich-presence = "1.1.0"
+
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-updater = "2"
+

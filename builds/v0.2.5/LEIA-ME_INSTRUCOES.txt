@@ -1,0 +1,22 @@
+﻿==================================================
+ PASSO A PASSO PARA LANCAR A VERSAO v0.2.5
+==================================================
+
+1. GITHUB (Onde os arquivos ficam hospedados):
+   - Va no seu repositorio: https://github.com/itsnikotina/VerdantLauncher/releases/new
+   - Crie uma nova tag chamada: v0.2.5
+   - Faca o upload do instalador que esta nesta pasta:
+     -> VerdantLauncher-v0.2.5-windows-setup.exe
+   - Clique em 'Publish release'!
+
+2. GITHUB (Arquivo do Auto-Updater):
+   - Pegue o arquivo 'verdant-updater.json' gerado nesta pasta.
+   - Jogue ele na RAIZ do seu repositorio no Github (basta dar commit/push).
+   - O launcher agora vai checar atualizacoes direto pelo Github, o cache dele e
+     de no maximo 5 minutinhos (muito melhor que o Supabase)!
+     
+3. ATENCAO (Transito da versao antiga para a nova):
+   Como os launchers antigos (v0.1.7 pra baixo) ainda estao configurados 
+   pra olhar pro Supabase, suba esse arquivo 'verdant-updater.json' TAMBEM 
+   la no Supabase pela ULTIMA VEZ. Assim as pessoas recebem a v0.1.8 e o 
+   novo launcher passa a olhar so pro Github.

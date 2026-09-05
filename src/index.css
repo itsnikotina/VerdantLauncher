@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🎮 Text Shadow Customizada para Botão Minecraft */
+@layer utilities {
+  .text-mc-shadow {
+    /* 
+      1. Outline em volta do texto principal (Y=-2 a 2)
+      2. Miolo da sombra verde escura (Y=3 a 6)
+      3. Outline em volta da sombra (laterais e base)
+    */
+    text-shadow:
+      /* Outline Grossa (3px) do topo e lados do texto */
+      -3px -3px 0 #090c0a, 0 -3px 0 #090c0a, 3px -3px 0 #090c0a,
+      -3px -2px 0 #090c0a, 3px -2px 0 #090c0a,
+      -3px -1px 0 #090c0a, 3px -1px 0 #090c0a,
+      -3px  0   0 #090c0a, 3px  0   0 #090c0a,
+      -3px  1px 0 #090c0a, 3px  1px 0 #090c0a,
+      -3px  2px 0 #090c0a, 3px  2px 0 #090c0a,
+      -3px  3px 0 #090c0a, 3px  3px 0 #090c0a,
+      
+      /* Camada extra interna para evitar buracos (2px) */
+      -2px -2px 0 #090c0a, 0 -2px 0 #090c0a, 2px -2px 0 #090c0a,
+      -2px 2px 0 #090c0a, 0 2px 0 #090c0a, 2px 2px 0 #090c0a,
+      -2px 0 0 #090c0a, 2px 0 0 #090c0a,
+
+      /* Sombra interna verde escura descendo (Y: 4 a 7) */
+      0 4px 0 #0d592a, 0 5px 0 #0d592a, 0 6px 0 #0d592a, 0 7px 0 #0d592a,
+      
+      /* Outline das laterais da sombra verde */
+      -3px 4px 0 #090c0a, 3px 4px 0 #090c0a,
+      -3px 5px 0 #090c0a, 3px 5px 0 #090c0a,
+      -3px 6px 0 #090c0a, 3px 6px 0 #090c0a,
+      -3px 7px 0 #090c0a, 3px 7px 0 #090c0a,
+      
+      /* Preenchimento anti-buracos nas laterais da sombra */
+      -2px 4px 0 #090c0a, 2px 4px 0 #090c0a,
+      -2px 7px 0 #090c0a, 2px 7px 0 #090c0a,
+
+      /* Base preta fechando o final da sombra (3px espessura: Y=8, 9, 10) */
+      -3px 8px 0 #090c0a, -2px 8px 0 #090c0a, -1px 8px 0 #090c0a, 0 8px 0 #090c0a, 1px 8px 0 #090c0a, 2px 8px 0 #090c0a, 3px 8px 0 #090c0a,
+      -3px 9px 0 #090c0a, -2px 9px 0 #090c0a, -1px 9px 0 #090c0a, 0 9px 0 #090c0a, 1px 9px 0 #090c0a, 2px 9px 0 #090c0a, 3px 9px 0 #090c0a,
+      -3px 10px 0 #090c0a, -2px 10px 0 #090c0a, -1px 10px 0 #090c0a, 0 10px 0 #090c0a, 1px 10px 0 #090c0a, 2px 10px 0 #090c0a, 3px 10px 0 #090c0a;
+  }
+}
+
+/* 🟢 Minecraft Fonts 🟢 */
+@font-face {
+  font-family: 'MinecraftBig';
+  src: url('/src/assets/fonts/MinecraftBig.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MinecraftSmall';
+  src: url('/src/assets/fonts/MinecraftSmall.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 🟢 Base Reset 🟢 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: #0a0c0a;
+  color: #ffffff;
+  user-select: none;
+}
+
+/* 🟢 Scrollbar customizada 🟢 */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #111411;
+}
+::-webkit-scrollbar-thumb {
+  background: #2dba7e;
+  border-radius: 2px;
+}
+
+/* 🟢 Drag region para janela frameless 🟢 */
+[data-tauri-drag-region] {
+  -webkit-app-region: drag;
+}
+
+/* 🟢 Botões e inputs sem -webkit-app-region 🟢 */
+button, input, a, select {
+  -webkit-app-region: no-drag;
+}
+/* Scrollbar styling for Verdant Modals */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #1db868;
+  border-radius: 0px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #32d583;
+}
+
+/* 🌊 Floating Animation 🌊 */
+@keyframes floatingWave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+.animate-floating {
+  animation: floatingWave 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* 🌈 Rainbow Color Cycle 🌈 */
+@keyframes rainbowColor {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+.animate-rainbow {
+  animation: rainbowColor 3s linear infinite;
+  display: inline-block;
+}

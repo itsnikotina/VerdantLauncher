@@ -1,0 +1,38 @@
+{
+  "name": "tauri-app",
+  "private": true,
+  "version": "0.2.6",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@iconify/react": "^6.0.2",
+    "@supabase/supabase-js": "^2.112.4",
+    "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-dialog": "^2.7.3",
+    "@tauri-apps/plugin-fs": "^2.5.2",
+    "@tauri-apps/plugin-opener": "^2",
+    "@tauri-apps/plugin-process": "^2.3.1",
+    "@tauri-apps/plugin-updater": "^2.11.0",
+    "lucide-react": "^1.38.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-easy-crop": "^6.2.3",
+    "skinview3d": "^3.4.2"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "autoprefixer": "^10.5.4",
+    "postcss": "^8.5.26",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4"
+  }
+}

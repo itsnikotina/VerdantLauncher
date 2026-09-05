@@ -1,0 +1,56 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Verdant Launcher",
+  "version": "0.2.7",
+  "identifier": "com.verdant.launcher",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Verdant Launcher",
+        "width": 1024,
+        "height": 600,
+        "minWidth": 1024,
+        "minHeight": 600,
+        "resizable": true,
+        "decorations": false,
+        "transparent": false,
+        "center": true,
+        "visible": true,
+        "focus": true,
+        "skipTaskbar": false
+      }
+    ],
+    "security": {
+      "assetProtocol": {
+        "scope": ["**"]
+      },
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all", "createUpdaterArtifacts": true,
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDU5MTNFNDgyNDc0NTU0QUQKUldTdFZFVkhndVFUV1dEVGJJcnBra2tOVkRtZ2l0VVVOMHFiZGNpQ1UrVmNPUG5aRm1jaElNb3kK",
+      "endpoints": [
+        "https://raw.githubusercontent.com/itsnikotina/VerdantLauncher/main/verdant-updater.json"
+      ]
+    }
+  }
+}
+

@@ -1,0 +1,11 @@
+{
+  "version": "0.1.8",
+  "notes": "Nova atualizacao do Verdant Launcher v0.1.8",
+  "pub_date": "2026-09-05T07:12:25Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTdFZFVkhndVFUV2JuenEySEVEaU1nUktvM1lGaHlpWWtTMG1DV0p5WEhBdmY0a3VSUENFZ1hVVjNWSWloc21kUXk2KytROHF5bFdSUDU3QVU3L0JGZ2pFZEcrYTBhSndRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4NTkyMzQ1CWZpbGU6VmVyZGFudCBMYXVuY2hlcl8wLjEuOF94NjQtc2V0dXAuZXhlClgzTlE3cDVnNWRQSTBvTDRwNkxLTFgvQ1FqTUpXc0VNV3pIRWRBeTNYekQrRHlmbkZsNDBIZEtKTDBETGhqZUpoQXVCQzJIUGpwRkxmZ2NIVE1NcERnPT0K",
+      "url": "https://github.com/itsnikotina/VerdantLauncher/releases/download/v0.1.8/VerdantLauncher-v0.1.8-windows-setup.exe"
+    }
+  }
+}

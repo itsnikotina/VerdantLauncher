@@ -1,0 +1,22 @@
+﻿==================================================
+ PASSO A PASSO PARA LANCAR A VERSAO v0.1.3
+==================================================
+
+1. GITHUB:
+   - Va no seu repositorio: https://github.com/itsnikotina/VerdantLauncher/releases/new
+   - Crie uma nova tag chamada: v0.1.3
+   - Faca o upload do instalador que esta nesta pasta:
+     -> VerdantLauncher-v0.1.3-windows-setup.exe
+   - Clique em 'Publish release'!
+
+2. SUPABASE (O Updater):
+   - Va no painel do Supabase, clique em Storage e abra o bucket 'updater'.
+   - Faca o upload do arquivo 'verdant-updater.json' que esta nesta pasta. 
+     (Se o Supabase perguntar, clique em substituir o arquivo atual).
+     
+3. PRONTO!
+   Assim que voce fizer o upload do json, todos os launchers instalados vao
+   detectar a atualizacao magicamente na proxima vez que forem abertos!
+   
+* DICA: Quer colocar notas de atualizacao personalizadas? Basta abrir o arquivo
+verdant-updater.json e alterar a linha "notes" antes de enviar para o Supabase!

@@ -1,0 +1,5 @@
+Sempre que você programar algo novo e quiser lançar a atualização pros jogadores, e por algum motivo esquecer como faz (eu sei q vc vai.)
+você só vai precisar fazer duas coisas:
+
+Ir no seu src-tauri/tauri.conf.json e no package.json e mudar a versão (ex: de 0.1.0 para 0.1.1).
+Dar dois cliques no arquivo Gerar_Atualizacao.bat.
