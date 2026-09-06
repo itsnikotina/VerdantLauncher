@@ -1,4 +1,4 @@
-name: Build Verdant Launcher
+﻿name: Build Verdant Launcher
 
 on:
   push:
@@ -74,3 +74,63 @@ jobs:
           releaseDraft: true
           prerelease: false
           args: ${{ matrix.args }}
+
+  publish-updater:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout do codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Gerar e publicar updater.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ github.ref_name }}
+        run: |
+          # Espera um pouco para garantir que os assets da release estao disponiveis
+          sleep 10
+          
+          # Baixa apenas os arquivos de assinatura da release atual
+          gh release download $VERSION -p "*.sig"
+          
+          # Extrai o conteudo das assinaturas
+          WIN_SIG=$(cat *nsis.zip.sig)
+          LINUX_SIG=$(cat *AppImage.tar.gz.sig)
+          
+          # Salva a data atual no formato ISO 8601
+          PUB_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          
+          # Cria o verdant-updater.json dinamicamente
+          cat <<EOF > verdant-updater.json
+          {
+            "version": "$VERSION",
+            "notes": "Nova versao lanÃ§ada! Veja o Github para mais detalhes.",
+            "pub_date": "$PUB_DATE",
+            "platforms": {
+              "windows-x86_64": {
+                "signature": "$WIN_SIG",
+                "url": "https://github.com/itsnikotina/VerdantLauncher/releases/download/$VERSION/Verdant.Launcher_${VERSION#v}_x64-setup.nsis.zip"
+              },
+              "linux-x86_64": {
+                "signature": "$LINUX_SIG",
+                "url": "https://github.com/itsnikotina/VerdantLauncher/releases/download/$VERSION/verdant-launcher_${VERSION#v}_amd64.AppImage.tar.gz"
+              }
+            }
+          }
+          EOF
+          
+          # Comita e envia o updater de volta para a branch main
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull origin main
+          git add verdant-updater.json
+          git commit -m "chore: auto-update verdant-updater.json para $VERSION [skip ci]" || echo "Nenhuma mudanca no updater"
+          git push origin main
+
