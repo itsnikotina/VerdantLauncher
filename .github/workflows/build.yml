@@ -1,4 +1,4 @@
-﻿name: Build Verdant Launcher
+name: Build Verdant Launcher
 
 on:
   push:

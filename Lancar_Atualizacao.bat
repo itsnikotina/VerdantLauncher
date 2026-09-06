@@ -1,4 +1,4 @@
-﻿@echo off
+@echo off
 setlocal enabledelayedexpansion
 title Verdant Launcher - Lançador Magico de Atualizações
 color 0B
