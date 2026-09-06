@@ -1,6 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
-title Verdant Launcher - Lançador Magico de Atualizações
+title Verdant Launcher - LanÃ§ador Magico de AtualizaÃ§Ãµes
 color 0B
 
 echo ====================================================
@@ -15,6 +15,7 @@ echo 4. O GitHub atualizara o verdant-updater.json sozinho!
 echo.
 
 set /p NEW_VERSION="Digite a NOVA VERSAO (ex: 0.3.0): "
+set NEW_VERSION=%NEW_VERSION: =%
 if "!NEW_VERSION!"=="" (
     echo Versao nao pode ser vazia!
     pause & exit /b 1
@@ -29,7 +30,7 @@ node -e "const fs=require('fs'); let f=JSON.parse(fs.readFileSync('src-tauri/tau
 
 echo [3/4] Commitando alteracoes...
 git add package.json package-lock.json src-tauri/tauri.conf.json
-git commit -m "Lançando versao v!NEW_VERSION!"
+git commit -m "LanÃ§ando versao v!NEW_VERSION!"
 
 echo [4/4] Criando tag e enviando para o GitHub (A magica comeca aqui!)...
 git tag v!NEW_VERSION!
@@ -51,3 +52,4 @@ echo O launcher dos jogadores vai se auto-atualizar assim que
 echo a aba Actions do Github terminar (leva uns 10 minutos).
 echo.
 pause
+
