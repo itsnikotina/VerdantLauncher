@@ -163,6 +163,10 @@ function LauncherLayout() {
       setIsLaunching(true);
       setLaunchStatus('Iniciando...');
       
+      // Atualiza a ultima jogada
+      await invoke('update_last_played', { id: targetId });
+      refreshActiveInstance();
+      
       await invoke('play_game', { 
         instanceId: targetId,
         username: displayName,

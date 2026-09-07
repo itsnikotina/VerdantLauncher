@@ -148,6 +148,8 @@ pub fn run() {
             instances::update_instance,
             instances::create_instance,
             instances::delete_instance,
+            instances::update_last_played,
+            instances::swap_instances_order,
             instances::open_instance_folder,
             instances::set_instance_icon,
             instances::set_instance_icon_data,

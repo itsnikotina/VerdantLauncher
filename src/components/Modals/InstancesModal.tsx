@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { invoke } from '@tauri-apps/api/core'
 import { open } from '@tauri-apps/plugin-dialog'
+import { ArrowUp, ArrowDown } from 'lucide-react'
 import Cropper from 'react-easy-crop'
 import getCroppedImg from '../../utils/cropImage'
 import { ManageInstanceModal } from './ManageInstanceModal'
@@ -53,6 +54,22 @@ export default function InstancesModal({ onClose, onPlay, onCreateNew, onDelete,
   useEffect(() => {
     fetchInstances()
   }, [])
+
+  const handleMoveUp = async (index: number) => {
+    if (index === 0) return;
+    const currentId = instances[index].id;
+    const prevId = instances[index - 1].id;
+    await invoke('swap_instances_order', { id1: currentId, id2: prevId });
+    fetchInstances();
+  };
+
+  const handleMoveDown = async (index: number) => {
+    if (index === instances.length - 1) return;
+    const currentId = instances[index].id;
+    const nextId = instances[index + 1].id;
+    await invoke('swap_instances_order', { id1: currentId, id2: nextId });
+    fetchInstances();
+  };
 
   const handleChangeIcon = async (id: string) => {
     try {
@@ -153,10 +170,10 @@ export default function InstancesModal({ onClose, onPlay, onCreateNew, onDelete,
             </div>
           )}
 
-          {instances.map(inst => (
+          {instances.map((inst, index) => (
             <div 
               key={inst.id} 
-              className="bg-[#111411] border border-[#2dba7e]/20 p-4 rounded flex gap-5 hover:border-[#2dba7e]/50 transition-colors"
+              className="bg-[#111411] border border-[#2dba7e]/20 p-4 rounded flex gap-5 hover:border-[#2dba7e]/50 transition-colors group/inst"
             >
               {/* Icon / Image */}
               <div 
@@ -165,8 +182,8 @@ export default function InstancesModal({ onClose, onPlay, onCreateNew, onDelete,
               >
                 {inst.icon_path ? (
                   <img 
-                    src={inst.icon_path}
-                    alt={inst.name}
+                    src={inst.icon_path} 
+                    alt={inst.name} 
                     className="w-full h-full object-cover"
                   />
                 ) : (
@@ -187,7 +204,28 @@ export default function InstancesModal({ onClose, onPlay, onCreateNew, onDelete,
                   <h3 className="font-mc-big text-white text-[20px] uppercase leading-none drop-shadow-md">
                     {inst.name}
                   </h3>
-                  <div className="flex gap-3 mt-1">
+                  <div className="flex gap-3 mt-1 items-center">
+                    
+                    {/* Order arrows */}
+                    <div className="flex gap-1 opacity-0 group-hover/inst:opacity-100 transition-opacity mr-2">
+                      <button 
+                        onClick={() => handleMoveUp(index)}
+                        disabled={index === 0}
+                        className="text-[#8a9a8a] hover:text-[#2dba7e] disabled:opacity-30 disabled:hover:text-[#8a9a8a] transition-colors"
+                        title="Mover para Cima"
+                      >
+                        <ArrowUp size={18} strokeWidth={3} />
+                      </button>
+                      <button 
+                        onClick={() => handleMoveDown(index)}
+                        disabled={index === instances.length - 1}
+                        className="text-[#8a9a8a] hover:text-[#2dba7e] disabled:opacity-30 disabled:hover:text-[#8a9a8a] transition-colors"
+                        title="Mover para Baixo"
+                      >
+                        <ArrowDown size={18} strokeWidth={3} />
+                      </button>
+                    </div>
+
                     <button 
                       title="Configuracoes"
                       onClick={() => setSettingsInstance(inst)}

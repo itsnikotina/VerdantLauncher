@@ -20,7 +20,7 @@ export default function PlayButton({ onClick, disabled, isPlaying, isLaunching, 
       ? "shadow-[0_4px_0_#374151]"
       : "shadow-[0_4px_0_#14844a]";
 
-  const label = isPlaying ? "FORÇAR PARADA" : isLaunching ? "CARREGANDO" : "JOGAR";
+  const label = isPlaying ? "ENCERRAR JOGO" : isLaunching ? "CARREGANDO" : "JOGAR";
   
   // Tamanho dinâmico para nao vazar a caixa
   const textSize = isPlaying ? "text-[18px] xl:text-[22px] 2xl:text-[28px]" : isLaunching ? "text-[20px] xl:text-[24px] 2xl:text-[32px]" : "text-[40px] xl:text-[48px] 2xl:text-[64px]";

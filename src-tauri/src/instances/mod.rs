@@ -15,6 +15,7 @@ pub struct InstanceConfig {
     pub java_args: Option<String>,
     pub icon_path: Option<String>,
     pub created_at: String,
+    pub last_played: Option<u64>,
 }
 
 fn get_instances_dir() -> Result<PathBuf, String> {
@@ -63,9 +64,71 @@ pub fn get_instances() -> Result<String, String> {
         }
     }
 
-    instances.sort_by(|a, b| b.created_at.cmp(&a.created_at));
+    instances.sort_by(|a, b| {
+        let a_time = a.last_played.unwrap_or(0);
+        let b_time = b.last_played.unwrap_or(0);
+        
+        let cmp = b_time.cmp(&a_time);
+        if cmp != std::cmp::Ordering::Equal {
+            return cmp;
+        }
+        b.created_at.cmp(&a.created_at)
+    });
 
     serde_json::to_string(&instances).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+pub fn swap_instances_order(id1: String, id2: String) -> Result<(), String> {
+    let dir = get_instances_dir()?;
+    let p1 = dir.join(&id1).join("instance.json");
+    let p2 = dir.join(&id2).join("instance.json");
+
+    if !p1.exists() || !p2.exists() {
+        return Err("Instancias nao encontradas".into());
+    }
+
+    let mut c1: InstanceConfig = serde_json::from_str(&fs::read_to_string(&p1).unwrap_or_default()).map_err(|e| e.to_string())?;
+    let mut c2: InstanceConfig = serde_json::from_str(&fs::read_to_string(&p2).unwrap_or_default()).map_err(|e| e.to_string())?;
+
+    let t1 = c1.last_played.unwrap_or(0);
+    let t2 = c2.last_played.unwrap_or(0);
+
+    if t1 == t2 {
+        let now = SystemTime::now().duration_since(UNIX_EPOCH).unwrap_or_default().as_secs();
+        // Se ambos não foram jogados ainda, damos prioridade artificial pro c1 que tentamos subir
+        c1.last_played = Some(now);
+        c2.last_played = Some(now - 1);
+    } else {
+        c1.last_played = Some(t2);
+        c2.last_played = Some(t1);
+    }
+
+    fs::write(&p1, serde_json::to_string_pretty(&c1).unwrap_or_default()).map_err(|e| e.to_string())?;
+    fs::write(&p2, serde_json::to_string_pretty(&c2).unwrap_or_default()).map_err(|e| e.to_string())?;
+
+    Ok(())
+}
+
+#[tauri::command]
+pub fn update_last_played(id: String) -> Result<(), String> {
+    let dir = get_instances_dir()?;
+    let json_path = dir.join(&id).join("instance.json");
+    if json_path.exists() {
+        if let Ok(content) = fs::read_to_string(&json_path) {
+            if let Ok(mut config) = serde_json::from_str::<InstanceConfig>(&content) {
+                let timestamp = SystemTime::now()
+                    .duration_since(UNIX_EPOCH)
+                    .unwrap_or_default()
+                    .as_secs();
+                config.last_played = Some(timestamp);
+                if let Ok(updated) = serde_json::to_string_pretty(&config) {
+                    let _ = fs::write(json_path, updated);
+                }
+            }
+        }
+    }
+    Ok(())
 }
 
 #[tauri::command]
