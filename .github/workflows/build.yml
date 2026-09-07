@@ -15,9 +15,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - platform: 'ubuntu-22.04'
-            args: '--target x86_64-unknown-linux-gnu'
-            name: 'Linux (AppImage + deb)'
           - platform: 'windows-latest'
             args: ''
             name: 'Windows (NSIS)'
@@ -102,25 +99,20 @@ jobs:
           
           # Extrai o conteudo das assinaturas
           WIN_SIG=$(cat *nsis.zip.sig)
-          LINUX_SIG=$(cat *AppImage.tar.gz.sig)
           
           # Salva a data atual no formato ISO 8601
           PUB_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           
-          # Cria o verdant-updater.json dinamicamente
+          # Cria o verdant-updater.json dinamicamente (somente Windows por enquanto)
           cat <<EOF > verdant-updater.json
           {
             "version": "$VERSION",
-            "notes": "Nova versao lanÃ§ada! Veja o Github para mais detalhes.",
+            "notes": "Nova versao lancada! Veja o Github para mais detalhes.",
             "pub_date": "$PUB_DATE",
             "platforms": {
               "windows-x86_64": {
                 "signature": "$WIN_SIG",
-                "url": "https://github.com/itsnikotina/VerdantLauncher/releases/download/$VERSION/Verdant.Launcher_${VERSION#v}_x64-setup.nsis.zip"
-              },
-              "linux-x86_64": {
-                "signature": "$LINUX_SIG",
-                "url": "https://github.com/itsnikotina/VerdantLauncher/releases/download/$VERSION/verdant-launcher_${VERSION#v}_amd64.AppImage.tar.gz"
+                "url": "https://github.com/itsnikotina/VerdantLauncher/releases/download/$VERSION/Verdant%20Launcher_${VERSION#v}_x64-setup.nsis.zip"
               }
             }
           }
