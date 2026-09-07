@@ -1,5 +1,5 @@
 import { invoke } from '@tauri-apps/api/core';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export function useDiscordRPC(
   details: string,
@@ -10,7 +10,28 @@ export function useDiscordRPC(
   smallImageText?: string,
   startTimestamp?: number
 ) {
+  const [enabled, setEnabled] = useState(true);
+
   useEffect(() => {
+    // Escuta mudanças feitas no SettingsModal
+    const handleSettingsChanged = () => {
+      const saved = localStorage.getItem('rpcEnabled');
+      if (saved !== null) {
+        setEnabled(saved === 'true');
+      }
+    };
+    
+    handleSettingsChanged(); // init
+    window.addEventListener('rpc-settings-changed', handleSettingsChanged);
+    return () => window.removeEventListener('rpc-settings-changed', handleSettingsChanged);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) {
+      invoke('clear_discord_rpc').catch(console.error);
+      return;
+    }
+
     // Fire and forget
     invoke('set_discord_rpc', {
       details,
@@ -21,7 +42,7 @@ export function useDiscordRPC(
       smallImageText,
       startTimestamp,
     }).catch((e) => console.warn('Discord RPC não está rodando no momento:', e));
-  }, [details, stateStr, largeImageKey, largeImageText, smallImageKey, smallImageText, startTimestamp]);
+  }, [details, stateStr, largeImageKey, largeImageText, smallImageKey, smallImageText, startTimestamp, enabled]);
 }
 
 

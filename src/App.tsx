@@ -15,6 +15,7 @@ import InstancesModal from './components/Modals/InstancesModal'
 import CreateInstanceModal from './components/Modals/CreateInstanceModal'
 import ProfileModal from './components/Modals/ProfileModal'
 import PacksModal from './components/Modals/PacksModal'
+import SettingsModal from './components/Modals/SettingsModal'
 import { DownloadProvider } from './contexts/DownloadContext'
 import GlobalDownloadIndicator from './components/GlobalDownloadIndicator'
 import GlobalUpdater from './components/GlobalUpdater'
@@ -109,6 +110,9 @@ function LauncherLayout() {
   } else if (currentModal === 'profile') {
     rpcDetails = 'No Perfil';
     rpcState = 'Ajustando o Avatar';
+  } else if (currentModal === 'settings') {
+    rpcDetails = 'Configurações';
+    rpcState = 'Ajustando o Launcher';
   } else if (!user && !mcUser) {
     rpcDetails = 'Na Tela de Login';
     rpcState = 'Use Verdant Launcher :)';
@@ -260,6 +264,11 @@ function LauncherLayout() {
           <PacksModal
             onClose={() => setCurrentModal(null)}
             onInstallComplete={refreshActiveInstance}
+          />
+        )}
+        {currentModal === 'settings' && (
+          <SettingsModal
+            onClose={() => setCurrentModal(null)}
           />
         )}
 

@@ -1,6 +1,6 @@
 type NavItem = {
   label: string
-  action?: 'create' | 'instances' | 'packs'
+  action?: 'create' | 'instances' | 'packs' | 'settings'
   active?: boolean
 }
 
@@ -8,6 +8,7 @@ const items: NavItem[] = [
   { label: 'CREATE PACK', action: 'create' },
   { label: 'MODPACKS', action: 'packs' },
   { label: 'INSTANCES', action: 'instances' },
+  { label: 'SETTINGS', action: 'settings' },
 ]
 
 export default function NavMenu({ setModal }: { setModal: (modal: string | null) => void }) {
@@ -16,8 +17,8 @@ export default function NavMenu({ setModal }: { setModal: (modal: string | null)
       {items.map((item) => (
         <button
           key={item.label}
-          onClick={() => {
-             if (item.action === 'create' || item.action === 'instances' || item.action === 'packs') {
+         onClick={() => {
+             if (item.action === 'create' || item.action === 'instances' || item.action === 'packs' || item.action === 'settings') {
                  setModal(item.action)
              }
           }}
