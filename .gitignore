@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Arquivos de texto e scripts locais
+*.txt
+*.bat
+!Lancar_Atualizacao.bat
+
+# Chaves de seguranca
+*.key
