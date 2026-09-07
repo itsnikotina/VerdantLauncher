@@ -1,11 +1,11 @@
 {
-  "version": "0.2.6",
-  "notes": "Nova atualizacao do Verdant Launcher v0.2.6",
-  "pub_date": "2026-09-05T22:02:32Z",
+  "version": "0.2.7",
+  "notes": "Nova atualizacao do Verdant Launcher v0.2.7",
+  "pub_date": "2026-09-07T15:14:03Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTdFZFVkhndVFUV2JEdnM2MWVEOWhvRFEvUHV3Y1IyYzFpWkdVZXlxVkpJeWV6Z09adTBTTXVrUk5sWEJXSTI4MUNBQnJ0OGllUFU1R3I3ZGxjdTEvS1JmRFg1cnU2aGdNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4NjQ1NzUyCWZpbGU6VmVyZGFudCBMYXVuY2hlcl8wLjIuNl94NjQtc2V0dXAuZXhlCm5WZG04NTRYbXZlcXgvd29lUlgrYnNjYVVIMDJuWW1pTDl2MmRYT0dqSjZJRmdvU2tVdHN3M0ptTTJuMm5SU3dBSHI3YjRaTFJRbTNHbEZsSkVPVkNnPT0K",
-      "url": "https://github.com/itsnikotina/VerdantLauncher/releases/download/v0.2.6/VerdantLauncher-v0.2.6-windows-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTdFZFVkhndVFUV2JiaktXMndlVk8wei9SNlczMzQ4ZEZGOWNaQ3lHaU1jdEQ5cllUNzIzTVhXcnZQZ1Y3WG5yMzZ0eTlicTlJM2dhODdMdDZhanh0Z3ZSMVp1Sm9OeVFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg4Nzk0MDQzCWZpbGU6VmVyZGFudCBMYXVuY2hlcl8wLjIuN194NjQtc2V0dXAuZXhlCmR2eGxiWGZ3UmdqZDdlODAwcThKcTkvdEF1Ym8xYVFSVktFcVBhVStITkF0bS9VZjJmNVpPQ2NjWkhSdkphdHQ0K09sQUJzeEtMYXhZVUpDckc1UkRBPT0K",
+      "url": "https://github.com/itsnikotina/VerdantLauncher/releases/download/v0.2.7/VerdantLauncher-v0.2.7-windows-setup.exe"
     }
   }
 }
