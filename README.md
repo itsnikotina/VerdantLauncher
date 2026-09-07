@@ -10,9 +10,9 @@ O **Verdant Launcher** é um launcher de Minecraft focado em performance, segura
 
 ## 🛡️ Por que ele existe?
 
-Este projeto nasceu de uma necessidade latente na comunidade (especialmente a brasileira) por uma alternativa direta, segura e transparente ao TLauncher.
+Este projeto nasceu de uma necessidade latente na comunidade global de jogadores por uma alternativa direta, segura e transparente ao TLauncher.
 
-Embora o TLauncher seja extremamente popular, a comunidade há muito tempo debate e enfrenta problemas graves envolvendo **spywares, malwares e falta de privacidade**, com muitas acusações e polêmicas que mancham a confiança no aplicativo, e infelizmente nada é feito a respeito pelos desenvolvedores.
+Embora o TLauncher seja extremamente popular mundialmente, a comunidade há muito tempo debate e enfrenta problemas graves envolvendo **spywares, malwares e falta de privacidade**, com muitas acusações e polêmicas que mancham a confiança no aplicativo, e infelizmente nada é feito a respeito pelos desenvolvedores.
 
 O **Verdant Launcher** existe para preencher essa lacuna. Nós acreditamos que você não deveria ter que arriscar a segurança do seu computador só para jogar Minecraft. Sendo um projeto **100% open-source**, qualquer desenvolvedor pode ler nosso código, compilar em casa e ter a certeza absoluta de que **não há spywares, rastreadores ocultos ou vírus** aqui.
 

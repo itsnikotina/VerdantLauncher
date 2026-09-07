@@ -30,3 +30,6 @@ dist-ssr
 
 # Chaves de seguranca
 *.key
+
+# Pastas de builds e compilados
+builds/
