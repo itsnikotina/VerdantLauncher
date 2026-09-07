@@ -26,7 +26,6 @@ dist-ssr
 # Arquivos de texto e scripts locais
 *.txt
 *.bat
-!Lancar_Atualizacao.bat
 
 # Chaves de seguranca
 *.key
