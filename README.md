@@ -1,8 +1,5 @@
-﻿<div align="center">
-  <img src="src/assets/images/VerdantLauncherGlowingLogo.png" alt="Verdant Launcher Logo" width="200"/>
-  <h1>Verdant Launcher</h1>
-  <p>Um launcher de Minecraft moderno, seguro e open-source.</p>
-</div>
+﻿# Verdant Launcher
+Um launcher de Minecraft moderno, seguro e open-source.
 
 ## 🌿 O que é o projeto?
 
@@ -14,22 +11,14 @@ Este projeto nasceu de uma necessidade latente na comunidade global de jogadores
 
 Embora o TLauncher seja extremamente popular mundialmente, a comunidade há muito tempo debate e enfrenta problemas graves envolvendo **spywares, malwares e falta de privacidade**, com muitas acusações e polêmicas que mancham a confiança no aplicativo, e infelizmente nada é feito a respeito pelos desenvolvedores.
 
-O **Verdant Launcher** existe para preencher essa lacuna. Nós acreditamos que você não deveria ter que arriscar a segurança do seu computador só para jogar Minecraft. Sendo um projeto **100% open-source**, qualquer desenvolvedor pode ler nosso código, compilar em casa e ter a certeza absoluta de que **não há spywares, rastreadores ocultos ou vírus** aqui.
+O **Verdant Launcher** existe para preencher essa lacuna. Acredito que você não deveria ter que arriscar a segurança do seu computador só para jogar Minecraft. Sendo um projeto **100% open-source**, qualquer pessoa pode ler o código, compilar em casa e ter a certeza absoluta de que **não há spywares, rastreadores ocultos ou vírus** aqui.
 
 ## 🚀 Tecnologias Utilizadas
 
-Para garantir a máxima performance, baixo consumo de memória RAM (diferente de launchers baseados em Electron) e segurança, utilizamos as melhores ferramentas modernas:
+Para garantir a máxima performance, baixo consumo de memória RAM (diferente de launchers baseados em Electron) e segurança, utilizei as melhores ferramentas modernas no desenvolvimento do projeto:
 
 - **[Tauri](https://tauri.app/):** Framework principal do aplicativo. Permite que o launcher seja extremamente leve e rápido usando as webviews nativas do sistema.
 - **[Rust](https://www.rust-lang.org/):** Todo o "motor" (back-end) do launcher, incluindo download de arquivos, extração do Java, execução do jogo e comunicação segura.
 - **[React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/):** Construção da interface do usuário (front-end) com código tipado e seguro.
 - **[Tailwind CSS](https://tailwindcss.com/):** Estilização da interface, garantindo um design responsivo e altamente customizável.
 - **[Supabase](https://supabase.com/):** Gerenciamento e banco de dados para contas Verdant e skins personalizadas.
-
-## 🛠️ Como contribuir ou compilar localmente?
-
-1. Certifique-se de ter o **Node.js** e o **Rust** instalados na sua máquina.
-2. Clone o repositório: `git clone https://github.com/itsnikotina/VerdantLauncher.git`
-3. Entre na pasta: `cd VerdantLauncher`
-4. Instale as dependências: `npm install`
-5. Rode em modo de desenvolvimento: `npm run tauri dev`
