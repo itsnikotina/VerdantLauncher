@@ -71,17 +71,16 @@ pub async fn setup_forge(
             fs::create_dir_all(parent).map_err(|e| e.to_string())?;
         }
 
-        let mut final_installer_name = installer_name.clone();
         if let Err(_) = download_file(client, &installer_url, &temp_installer).await {
             emit_status(
                 "URL padrao do instalador falhou (404), tentando formato legacy (1.8.9/1.7.10)...",
             );
 
             let legacy_version = format!("{}-{}-{}", mc_version, loader_version, mc_version);
-            final_installer_name = format!("forge-{}-installer.jar", legacy_version);
+            let final_installer_name_legacy = format!("forge-{}-installer.jar", legacy_version);
             let installer_url_legacy = format!(
                 "https://maven.minecraftforge.net/net/minecraftforge/forge/{}/{}",
-                legacy_version, final_installer_name
+                legacy_version, final_installer_name_legacy
             );
 
             download_file(client, &installer_url_legacy, &temp_installer)

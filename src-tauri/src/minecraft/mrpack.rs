@@ -205,6 +205,7 @@ pub async fn install_mrpack(
         java_args: None,
         icon_path: icon_url.clone(),
         created_at: timestamp,
+        last_played: None,
     };
 
     let json = serde_json::to_string_pretty(&config).map_err(|e| e.to_string())?;
@@ -264,7 +265,7 @@ pub async fn install_mrpack(
 
     let total_valid = valid_files.len();
 
-    let total_bytes: u64 = valid_files.iter().filter_map(|f| f.file_size).sum();
+    let _total_bytes: u64 = valid_files.iter().filter_map(|f| f.file_size).sum();
     for (i, file_info) in valid_files.into_iter().enumerate() {
         if cancel_token.load(Ordering::SeqCst) {
             fs::remove_dir_all(&instance_dir).ok();

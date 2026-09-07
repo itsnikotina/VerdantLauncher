@@ -177,6 +177,7 @@ pub fn create_instance(
         java_args: None,
         icon_path: None,
         created_at: timestamp,
+        last_played: None,
     };
 
     let json = serde_json::to_string_pretty(&config).map_err(|e| e.to_string())?;

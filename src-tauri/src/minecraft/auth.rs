@@ -1,4 +1,4 @@
-﻿use reqwest::Client;
+use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use std::time::Duration;
 use tokio::time::sleep;
@@ -30,8 +30,10 @@ pub struct MsTokenResponse {
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct XboxResponse {
-    pub Token: String,
-    pub DisplayClaims: DisplayClaims,
+    #[serde(rename = "Token")]
+    pub token: String,
+    #[serde(rename = "DisplayClaims")]
+    pub display_claims: DisplayClaims,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
