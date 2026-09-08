@@ -1,7 +1,7 @@
 ﻿# Verdant Launcher
 Um launcher de Minecraft moderno, seguro e open-source.
 
-## 🌿 O que é o projeto?
+## 🍃 O que é o projeto?
 
 O **Verdant Launcher** é um launcher de Minecraft focado em performance, segurança e usabilidade. Desenvolvido com uma interface moderna e minimalista, o objetivo principal é proporcionar aos jogadores a melhor experiência ao gerenciar suas instâncias, modpacks e contas de Minecraft, tudo em um só lugar.
 
